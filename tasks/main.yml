@@ -1,0 +1,10 @@
+---
+# tasks file for hashicorp_vault
+- name: Prerequisites
+  include_tasks: tasks/prerequisite.yml
+
+- name: Install
+  include_tasks: tasks/install.yml
+
+- name: Post Install
+  include_tasks: tasks/post-install.yml

@@ -1,0 +1,28 @@
+- name: Converge
+  hosts: all
+  become: true
+  tasks:
+    - include_role:
+        name: "arpanrec.linux_patching"
+
+    - include_role:
+        name: arpanrec.ssh_hardening
+
+    - include_role:
+        name: arpanrec.ssh_hardening
+
+    - include_role:
+        name: arpanrec.user_add
+      vars:
+        rv_user_add_username: "{{ rv_hashicorp_vault_os_user }}"
+        rv_user_add_user_nopasswd_commands: ["ALL"]
+
+    - include_role:
+        name: geerlingguy.docker
+      vars:
+        docker_users: ["{{ rv_hashicorp_vault_os_user }}"]
+        docker_package_state: present
+        docker_install_compose: false
+
+    - include_role:
+        name: arpanrec.server_workspace
