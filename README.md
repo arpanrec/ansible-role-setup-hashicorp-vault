@@ -1,4 +1,4 @@
-Ansible Playbook: hashicorp_vault
+Ansible Role: Setup Hashicorp Vault
 =================================
 
 An ansible Playbook to install [HashiCorp Vault](https://www.vaultproject.io) with file backend on [docker](https://hub.docker.com/_/vault)
